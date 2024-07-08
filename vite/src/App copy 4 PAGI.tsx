@@ -5,12 +5,6 @@ import { useEffect, useState } from 'react'
 import { IRoot } from './product.types'
 
 const isAuth = true
-export interface Root {
-  userId: number
-  id: number
-  title: string
-  completed: boolean
-}
 
 async function getData(skip: number = 0): Promise<{ data: IRoot }> {
   return axios.get(`https://dummyjson.com/products/?limit=10&skip=${skip}`)
