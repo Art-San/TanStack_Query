@@ -37,7 +37,7 @@ function App() {
       {isLoading
         ? 'Loading...'
         : data
-        ? data.map((post) => <div key={post?.id}>{post?.title}</div>)
+        ? data.map((post: any) => <div key={post?.id}>{post?.title}</div>)
         : ' Not found'}
     </>
   )
