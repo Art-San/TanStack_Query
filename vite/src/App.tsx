@@ -1,3 +1,6 @@
+// React Query Tutorial V5 - Full Tanstack Query Tutorial for Beginners
+// https://www.youtube.com/watch?v=3e-higRXoaM&t=924s
+
 import './App.css'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
