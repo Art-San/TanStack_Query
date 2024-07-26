@@ -15,6 +15,7 @@ export const getTodo = async (id: number) => {
 }
 
 export const createTodo = async (data: Todo) => {
+  console.log(0, 'createTodo')
   await axiosInstance.post('todos', data)
 }
 

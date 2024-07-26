@@ -10,6 +10,7 @@ import { Todo } from '../types/todo'
 
 export default function Todos() {
   const todosIdsQuery = useTodosIds()
+
   const todosQueries = useTodos(todosIdsQuery.data)
 
   const createTodoMutation = useCreateTodo()
@@ -48,28 +49,29 @@ export default function Todos() {
       </form>
 
       <ul>
-        {todosQueries.map(({ data }) => (
-          <li key={data?.id}>
-            <div>Id: {data?.id}</div>
-            <span>
-              <strong>Title:</strong> {data?.title},{' '}
-              <strong>Description:</strong> {data?.description}
-            </span>
-            <div>
-              <button
-                onClick={() => handleMarkAsDoneSubmit(data)}
-                disabled={data?.checked}
-              >
-                {data?.checked ? 'Done' : 'Mark as done'}
-              </button>
-              {data && data.id && (
-                <button onClick={() => handleDeleteTodo(data.id!)}>
-                  Delete
+        {todosQueries &&
+          todosQueries.reverse().map((item, index) => (
+            <li key={index}>
+              <div>Id: {item.data?.id}</div>
+              <span>
+                <strong>Title:</strong> {item.data?.title},{' '}
+                <strong>Description:</strong> {item.data?.description}
+              </span>
+              <div>
+                <button
+                  onClick={() => handleMarkAsDoneSubmit(item.data)}
+                  disabled={item.data?.checked}
+                >
+                  {item.data?.checked ? 'Done' : 'Mark as done'}
                 </button>
-              )}
-            </div>
-          </li>
-        ))}
+                {item.data && item.data.id && (
+                  <button onClick={() => handleDeleteTodo(item.data.id!)}>
+                    Delete
+                  </button>
+                )}
+              </div>
+            </li>
+          ))}
       </ul>
     </>
   )
